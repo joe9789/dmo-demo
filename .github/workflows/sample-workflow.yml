@@ -13,9 +13,21 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Install UiPath CLI from local package
-        shell: pwsh
+
+      - name: Extract UiPath CLI NUPKG
+        shell: powershell
         run: |
-          Install-PackageProvider -Name NuGet -Force
-          Install-Package -Source .\tools\UiPath.CLI.25.4.9364.27216.nupkg -Force
-          uipcli --version
+          Expand-Archive -Path .\tools\UiPath.CLI.25.4.9364.27216.nupkg -DestinationPath ".\uipath_cli"
+    
+      - name: Add UiPath CLI to PATH
+        shell: powershell
+        run: |
+          $env:Path += ";${{ github.workspace }}\uipath_cli\tools"
+          Write-Host "PATH updated: $env:Path"
+
+      - name: Run UiPath CLI Command
+        shell: powershell
+        run: |
+          uipcli.exe --version
+
+
