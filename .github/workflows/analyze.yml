@@ -2,7 +2,8 @@ name: UiPath CI/CD Sample
 
 on:
   push:
-    branches: [ "dev" ]
+    branches: 
+      - dev
 
 jobs:
   build-deploy:
