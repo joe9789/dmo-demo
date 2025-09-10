@@ -6,7 +6,7 @@ on:
       - dev
 
 jobs:
-  build-deploy:
+  analyze-project:
     runs-on: windows-latest   # UiPath CLI works best on Windows runners
 
     steps:
