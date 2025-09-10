@@ -16,3 +16,6 @@ jobs:
       # Set up the UiPath CLI (uipcli) and add it to PATH on your runner
       - name: Setup UiPath (uipcli) command line tool
         uses: Mikael-RnD/setup-uipath@v2
+
+      - name: Run CLI Task Analyze
+        run: uipcli package analyze 
