@@ -18,4 +18,5 @@ jobs:
         uses: Mikael-RnD/setup-uipath@v2
 
       - name: Run CLI Task Analyze
-        run: uipcli package analyze ${{ github.workspace }}/project.json 
+        run: uipcli package analyze ${{ github.workspace }}/project.json --resultPath "C:\analyze-result.json"
+        
