@@ -16,10 +16,4 @@ jobs:
       - name: Add local nupkg
         shell: pwsh
         run: |
-          dotnet nuget add source "C:\MyLocalNugets" -n LocalPackages
-          dotnet add package ".\tools\UiPath.CLI.25.4.9364.27216.nupkg" -s LocalPackages
-
-      - name: Install UiPath CLI from local nupkg
-        shell: pwsh
-        run: |
-          dotnet add package ".\tools\UiPath.CLI.25.4.9364.27216.nupkg" -s LocalPackages
+          Install-Package
