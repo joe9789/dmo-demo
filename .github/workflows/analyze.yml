@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Add local nupkg
-        shell: pwsh
-        run: |
-          Install-Package ".\tools\UiPath.CLI.25.4.9364.27216.nupkg" 
+      - name: Checkout repository
+        uses: Mikael-RnD/setup-uipath@v1 # Or the official UiPath action if available
+        with:
+          version: 'latest' # Or a specific version like '2.0.17'
