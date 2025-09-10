@@ -16,13 +16,5 @@ jobs:
       - name: Install UiPath CLI from local nupkg
         shell: pwsh
         run: |
-          nuget install ".\tools\UiPath.CLI.25.4.9364.27216.nupkg" `
-            -Source "." `
-            -OutputDirectory $env:USERPROFILE\uipathcli
-          $cliPath = Get-ChildItem "$env:USERPROFILE\uipathcli" -Recurse -Filter "uipcli.exe" | Select-Object -First 1
-          echo $cliPath.DirectoryName | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-
-      - name: Analyze UiPath Project
-        shell: pwsh
-        run: |
-          uipcli.exe package analyze "$(Get-Location)"
+          nuget install
+           
