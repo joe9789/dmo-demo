@@ -1,16 +1,27 @@
-name: UiPath CI/CD project analysis
+name: UiPath CI/CD Sample
 
 on:
   push:
     branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
-  project-analysis:
-    runs-on: windows-latest
+  build-deploy:
+    runs-on: windows-latest   # UiPath CLI works best on Windows runners
 
     steps:
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Extract UiPath CLI from .nupkg
+        shell: pwsh
+        run: |
+          Rename-Item ".\tools\UiPath.CLI.25.4.9364.27216.nupkg" "UiPath.CLI.zip"
+          Expand-Archive -Path ".\tools\UiPath.CLI.zip" -DestinationPath "$env:USERPROFILE\uipathcli"
+          
+          # Add tools folder to PATH
+          echo "$env:USERPROFILE\uipathcli\tools" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
         
       - name: Run UiPath CLI Command
         shell: powershell
