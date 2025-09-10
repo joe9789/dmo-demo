@@ -19,7 +19,11 @@ jobs:
         run: |
           Rename-Item ".\tools\UiPath.CLI.25.4.9364.27216.nupkg" "UiPath.CLI.zip"
           Expand-Archive -Path ".\tools\UiPath.CLI.zip" -DestinationPath "$env:USERPROFILE\uipathcli"
+          
+          # Add tools folder to PATH
           echo "$env:USERPROFILE\uipathcli\tools" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          
+          # Verify CLI is available
           uipcli --version
 
       - name: Run UiPath CLI Command
