@@ -13,7 +13,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Checkout repository
-        uses: Mikael-RnD/setup-uipath@v1 # Or the official UiPath action if available
-        with:
-          version: 'latest' # Or a specific version like '2.0.17'
+      # Set up the UiPath CLI (uipcli) and add it to PATH on your runner
+      - name: Setup UiPath (uipcli) command line tool
+        uses: Mikael-RnD/setup-uipath@v2
