@@ -1,0 +1,21 @@
+name: UiPath CI/CD Sample
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-deploy:
+    runs-on: windows-latest   # UiPath CLI works best on Windows runners
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install UiPath CLI from local package
+        shell: pwsh
+        run: |
+          Install-PackageProvider -Name NuGet -Force
+          Install-Package -Source .\tools\UiPath.CLI.25.4.9364.27216.nupkg -Force
+          uipcli --version
