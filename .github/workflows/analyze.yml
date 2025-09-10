@@ -16,4 +16,4 @@ jobs:
       - name: Add local nupkg
         shell: pwsh
         run: |
-          Install-Package
+          Install-Package ".\tools\UiPath.CLI.25.4.9364.27216.nupkg" 
