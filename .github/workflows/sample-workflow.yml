@@ -27,6 +27,5 @@ jobs:
       - name: Run UiPath CLI Command
         shell: powershell
         run: |
-          uipcli.exe --version
-
-
+          uipcli.exe package analyze
+      
