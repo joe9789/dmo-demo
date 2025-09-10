@@ -18,4 +18,4 @@ jobs:
         uses: Mikael-RnD/setup-uipath@v2
 
       - name: Run CLI Task Analyze
-        run: uipcli package analyze 
+        run: uipcli package analyze ${{ github.workspace }}/project.json 
