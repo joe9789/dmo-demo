@@ -25,4 +25,4 @@ jobs:
       - name: Run UiPath CLI Command
         shell: powershell
         run: |
-          uipcli.exe package analyze
+          uipcli.exe package analyze "$(Get-Location)" 
